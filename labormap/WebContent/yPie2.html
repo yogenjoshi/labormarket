@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="echarts.js"></script>
+</head>
+<body>
+	
+	<div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // specify chart configuration item and data
+        option = {
+    backgroundColor: '#2c343c',
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name: 'Yogen',
+            type: 'pie',
+            radius: '55%',
+            data:[
+                {value:235, name:'Riyadh'},
+                {value:274, name:'Makkah'},
+                {value:310, name:'Madinah'},
+                {value:335, name:'Jeddah'},
+                {value:400, name:'Polar'}
+            ],
+            roseType: 'angle',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+        // use configuration item and data specified to show chart
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/Manufacturing.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = 'Occupational Forecast';
+
+var data = [
+    [[17096869, 8, 17096869, 'Construction',2018],[27662440, 20, 27662440, 'Wholesale & Retail',2018], [11546057, 24, 1154605773,'Manufacturing',2018], [10582082, 75, 10582082, 'Electricity & gas',2018], [4986705, 50, 4986705, 'Transportation',2018], [56943299, 35, 56943299, 'Information & Communication',2018], [78958237, 35, 78958237, 'Water & Wast Mgmt.',2018], [254830, 45, 254830, 'Healthcare',2018], [8706017, 80, 870601776, 'Finance',2018], [92249285, 30, 122249285, 'Mining & quarying',2018], [20194354, 87, 20194354, 'Education',2018], [42972254, 98, 42972254, 'Public Admin.',2018], [3397534, 100, 3397534, 'Defense',2018], [4240375, 20, 4240375, 'Science & Technology',2018]],
+    [[23968973, 15, 23968973,'Construction',2030], [35939927, 35, 35939927,'Wholesale & Retail',2030], [13760489, 30, 1376048943,'Manufacturing',2030], [11389562, 78, 11389562,'Electricity & gas',2030],[5503457, 65, 5503457,'Transportation',2030], [64395345, 50, 64395345,'Information & Communication',2030], [80688545, 30, 80688545,'Water & Wast Mgmt.',2030], [329425, 55, 329425,'Healthcare',2030], [13110505, 95, 1311050527,'Finance',2030], [96573481, 25, 126573481,'Mining & quarying',2030], [25155317, 90, 25155317,'Education',2030], [50293439, 98, 50293439,'Public Admin.',2030], [4528526, 100,4528526,'Defense',2030], [5210967, 40, 5210967,'Science & Technology',2030]]
+];
+
+option = {
+    backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+        offset: 0,
+        color: '#f7f8fa'
+    }, {
+        offset: 1,
+        color: '#cdd0d5'
+    }]),
+    title: {
+        text: '2018 Job Market and 2030 Job Forecast'
+    },
+    legend: {
+        right: 10,
+        data: ['2018', '2030']
+    },
+    xAxis: {
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+        }
+    },
+    yAxis: {
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+        },
+        scale: true
+    },
+    series: [{
+        name: '2018',
+        data: data[0],
+        type: 'scatter',
+        symbolSize: function (data) {
+            return Math.sqrt(data[2]) / 5e2;
+        },
+        label: {
+            emphasis: {
+                show: true,
+                formatter: function (param) {
+                    return param.data[3];
+                },
+                position: 'top'
+            }
+        },
+        itemStyle: {
+            normal: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(120, 36, 50, 0.5)',
+                shadowOffsetY: 5,
+                color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                    offset: 0,
+                    color: 'rgb(251, 118, 123)'
+                }, {
+                    offset: 1,
+                    color: 'rgb(204, 46, 72)'
+                }])
+            }
+        }
+    }, {
+        name: '2030',
+        data: data[1],
+        type: 'scatter',
+        symbolSize: function (data) {
+            return Math.sqrt(data[2]) / 5e2;
+        },
+        label: {
+            emphasis: {
+                show: true,
+                formatter: function (param) {
+                    return param.data[3];
+                },
+                position: 'top'
+            }
+        },
+        itemStyle: {
+            normal: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(25, 100, 150, 0.5)',
+                shadowOffsetY: 5,
+                color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                    offset: 0,
+                    color: 'rgb(129, 227, 238)'
+                }, {
+                    offset: 1,
+                    color: 'rgb(25, 183, 207)'
+                }])
+            }
+        }
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

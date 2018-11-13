@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module context="labormap" name="labormap" path="C:/eclipse/eclipseProjects/labourMarket/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/labormap" type="static"/>
+</server>

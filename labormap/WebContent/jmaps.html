@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+       	
+    <style> 
+    .container {
+	   	 width: 50px;
+	  	 height: 50px;	  
+		  margin: 0 auto;
+		  display: block;
+		  overflow:hidden;  
+		  /* cosmetics */
+		  border: 1px solid #eee;
+		  border-radius: 3px;
+		  box-shadow: 0 0 7px 0px rgba(100, 100, 100, 0.15);
+	}
+	
+    .markRiyadh {
+	  border-radius: 50%; top: 364px; left: 500px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(255,0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	 .markMakkah {
+	  border-radius: 50%; top: 464px; left: 300px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0,255, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	 .markMadinah {
+	  border-radius: 50%; top: 304px; left: 200px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0,0, 255, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markQassim {
+	  border-radius: 50%; top: 258px; left: 380px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(198, 143, 75, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markEast {
+	  border-radius: 50%; top: 404px; left: 700px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(226, 36, 6, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markAsir {
+	  border-radius: 50%; top: 580px; left: 380px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(255, 343, 89, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markTabuk {
+	  border-radius: 50%; top: 180px; left: 150px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(214, 18, 207, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markHail {
+	  border-radius: 50%; top: 210px; left: 340px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markNorth {
+	  border-radius: 50%; top: 90px; left: 330px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markJazan {
+	  border-radius: 50%; top: 670px; left: 335px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markNajran {
+	  border-radius: 50%; top: 620px; left: 520px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markBaha {
+	  border-radius: 50%; top: 550px; left: 280px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+  	  .markJouf {
+	  border-radius: 50%; top: 120px; left: 220px; height: 50px; width: 50px; display: block; border-radius: 50%; position: absolute;	
+  	  border: 2px solid #ccc; transform: scale(0); background: rgba(0, 0, 0, .1);  animation: markPulse 2s ease-out infinite; }
+	@keyframes markPulse {
+	   100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+	}
+      .riyadh{margin: 0 auto; position: absolute; top: 364px; left: 500px; height: 25; width: 25; text-align:center; fillColor: '#f03'; fillOpacity: 0.5; 	}
+	  .riyadhT{ margin: 0 auto; position: absolute; top: 364px; left: 470px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#f03'; fillOpacity: 0.5;}
+	
+	  .makkah{margin: 0 auto; position: absolute; top: 464px; left: 300px; height: 25; width: 25; text-align:center; fillColor: '#f03'; fillOpacity: 0.5;	}
+	  .makkahT{ margin: 0 auto; position: absolute; top: 444px; left: 250px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#f03'; fillOpacity: 0.5;}
+	
+	  .madinah{margin: 0 auto; position: absolute; top: 304px; left: 200px; height: 25; width: 25; text-align:center; fillColor: '#f03'; fillOpacity: 0.5;	}
+	  .madinahT{ margin: 0 auto; position: absolute; top: 304px; left: 160px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#f03'; fillOpacity: 0.5;}
+	  
+	  .qassim{margin: 0 auto; position: absolute; top: 258px; left: 380px; height: 25; width: 25; text-align:center; fillColor: '#f03'; fillOpacity: 0.5;	}
+	  .qassimT{ margin: 0 auto; position: absolute; top: 258px; left: 360px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	  
+	  .east{margin: 0 auto; position: absolute; top: 404px; left: 700px; height: 25; width: 25; text-align:center; fillColor: '#e22406'; fillOpacity: 0.5;	}
+	  .eastT{ margin: 0 auto; position: absolute; top: 394px; left: 670px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	
+	  .asir{margin: 0 auto; position: absolute; top: 580px; left: 380px; height: 25; width: 25; text-align:center; fillColor: '#e22406'; fillOpacity: 0.5;	}
+	  .asirT{ margin: 0 auto; position: absolute; top: 570px; left: 354px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	
+	  .tabuk{margin: 0 auto; position: absolute; top: 180px; left: 150px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .tabukT{ margin: 0 auto; position: absolute; top: 160px; left: 135px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	  
+	  .hail{margin: 0 auto; position: absolute; top: 210px; left: 340px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .hailT{ margin: 0 auto; position: absolute; top: 210px; left: 305px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;} 	 	
+	
+	  .north{margin: 0 auto; position: absolute; top: 90px; left: 330px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .northT{ margin: 0 auto; position: absolute; top: 90px; left: 300px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;} 
+	  
+	  .jazan{margin: 0 auto; position: absolute; top: 670px; left: 335px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .jazanT{ margin: 0 auto; position: absolute; top: 660px; left: 320px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	  
+	  .najran{margin: 0 auto; position: absolute; top: 620px; left: 520px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .najranT{ margin: 0 auto; position: absolute; top: 610px; left: 480px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	  
+	  .baha{margin: 0 auto; position: absolute; top: 550px; left: 280px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .bahaT{ margin: 0 auto; position: absolute; top: 540px; left: 260px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+	  
+	  .jouf{margin: 0 auto; position: absolute; top: 120px; left: 220px; height: 25; width: 25; text-align:center; fillColor: '#d612cf'; fillOpacity: 0.5;	}
+	  .joufT{ margin: 0 auto; position: absolute; top: 110px; left: 200px; height: 25;	width: 25;	text-align:center; font-size: 20px; font-family: Arial;	fillColor: '#c68f4b'; fillOpacity: 0.5;}
+		
+		p{
+			font-family:verdana;
+			font-size:30px;
+			font-weight: bold;			 			
+		}
+		table, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		}	
+	</style>		
+	 
+	
+		<script>
+			riyadhArr = ["5,053,574", "5,053,573", "5,053,575", "5,053,576", "5,128,352", "5,128,352", "5,176,305", "5,176,305", "5,286,118", "5,286,118", "5,361,482", "5,361,482", "5,471,593", "5,471,593", "5,543,837", "5,543,837", "5,664,770", "5,664,770", "5,657,962", "5,657,962", "5,347,017", "5,664,810", "6,081,074", "4,295,167", "4,267,561", "4,240,728", "4,203,980", "4,160,804", "4,101,958", "4,002,699"];
+			riyadhNArr = ["5053574", "5053573", "5053575", "5053576", "5128352", "5128352", "5176305", "5176305", "5286118", "5286118", "5361482", "5361482", "5471593", "5471593", "5543837", "5543837", "5664770", "5664770", "5657962", "5657962", "5347017", "5664810", "6081074", "4295167", "4267561", "4240728", "4203980", "4160804", "4101958", "4002699"];
+			makkahArr = ["5,117,422", "5,117,423", "5,117,424", "5,117,425", "5,193,083", "5,193,083", "5,250,498", "5,250,498", "5,383,819", "5,383,819", "5,445,805", "5,445,805", "5,547,557", "5,547,557", "5,640,234", "5,640,234", "5,790,905", "5,790,905", "5,937,049", "5,937,049", "4,916,395", "5,901,628", "6,276,418", "2,571,140", "2,545,670", "2,519,662", "2,497,565", "2,460,823", "2,400,808", "2,324,857"];
+			makkahNArr = ["5117422", "5117422", "5117422", "5117422", "5193083", "5193083", "5250498", "5250498", "5383819", "5383819", "5445805", "5445805", "5547557", "5547557", "5640234", "5640234", "5790905", "5790905", "5937049", "5937049", "4916395", "5901628", "6276418", "2571140", "2545670", "2519662", "2497565", "2460823", "2400808", "2324857"];
+			madinahArr = ["1,243,626", "1,243,627", "1,243,628", "1,243,629", "1,261,089", "1,261,089", "1,273,920", "1,273,920", "1,301,242", "1,301,242", "1,317,673", "1,317,673", "1,337,263", "1,337,263", "1,358,912", "1,358,912", "1,392,716", "1,392,716", "1,453,937", "1,453,937", "1,146,656", "1,452,017", "1,509,692", "478,258", "473,309", "466,980", "460,150", "448,990", "436,036", "418,212"]; 
+			madinahNArr = [1243626,1243626,1243626,1243626,1261089,1261089,1273920,1273920,1301242,1301242,1317673,1317673,1337263,1337263,1358912,1358912,1392716,1392716,1453937,1453937,1146656,1452017,1509692,478258,473309,466980,460150,448990,436036,418212];
+			qassimArr = ["888,998", "888,998", "888,998", "888,998", "902,066", "902,066", "910,543", "910,543", "925,089", "925,089", "942,868", "942,868", "961,428", "961,428", "972,168", "972,168", "990,981", "990,981", "996,128", "996,128", "862,153", "1,005,166", "1,054,921", "526,371", "525,393", "521,196", "511,309", "492,135", "472,468", "444,882"];
+			qassimNArr = [888998,888998,888998,888998,902066,902066,910543,910543,925089,925089,942868,942868,961428,961428,972168,972168,990981,990981,996128,996128,862153,1005166,1054921,526371,525393,521196,511309,492135,472468,444882];
+			eastArr = ["3,079,312", "3,079,312", "3,079,312", "3,079,312", "3,123,060", "3,123,060", "3,156,000", "3,156,000", "3,207,311", "3,207,311", "3,258,231", "3,258,231", "3,323,944", "3,323,944", "3,356,233", "3,356,233", "3,432,401", "3,432,401", "3,427,745", "3,427,745", "3,125,681", "3,448,123", "3,638,082", "2,290,837", "2,269,548", "2,248,608", "2,223,167", "2,191,336", "2,148,173", "2,083,914"];
+			eastNArr = [3079312,3079312,3079312,3079312,3123060,3123060,3156000,3156000,3207311,3207311,3258231,3258231,3323944,3323944,3356233,3356233,3432401,3432401,3427745,3427745,3125681,3448123,3638082,2290837,2269548,2248608,2223167,2191336,2148173,2083914];
+			asirArr = ["1,359,148", "1,359,148", "1,359,148", "1,359,148", "1,378,281", "1,378,281", "1,389,700", "1,389,700", "1,412,928", "1,412,928", "1,438,617", "1,438,617", "1,472,584", "1,472,584", "1,480,268", "1,480,268", "1,508,506", "1,508,506", "1,534,141", "1,534,141", "1,193,225", "1,540,939", "1,570,010", "468,727", "465,718", "460,114", "455,019", "448,201", "436,713", "422,511" ];
+			asirNArr = [1359148,1359148,1359148,1359148,1378281,1378281,1389700,1389700,1412928,1412928,1438617,1438617,1472584,1472584,1480268,1480268,1508506,1508506,1534141,1534141,1193225,1540939,1570010,468727,465718,460114,455019,448201,436713,422511];
+			tabukArr = ["527,440", "527,440", "527,440", "527,440", "534,674", "534,674", "540,268", "540,268", "548,558", "548,558", "558,209", "558,209", "570,835", "570,835", "572,304", "572,304", "585,990", "585,990", "611,404", "611,404", "467,962", "616,264", "628,178", "159,444", "157,798", "156,090", "154,494", "152,046", "147,419", "141,603"];
+			tabukNArr = [527440,527440,527440,527440,534674,534674,540268,540268,548558,548558,558209,558209,570835,570835,572304,572304,585990,585990,611404,611404,467962,616264,628178,159444,157798,156090,154494,152046,147419,141603];
+			hailArr = ["438,249", "438,249", "438,249", "438,249", "444,935", "444,935", "448,838", "448,838", "456,718", "456,718", "464,614", "464,614", "467,338", "467,338", "477,128", "477,128", "488,335", "488,335", "493,496", "493,496", "396,677", "496,055", "504,885", "189,092", "188,486", "186,789", "183,229", "177,062", "170,613", "161,442"];
+			hailNArr = [438249,438249,438249,438249,444935,444935,448838,448838,456718,456718,464614,464614,467338,467338,477128,477128,488335,488335,493496,493496,396677,496055,504885,189092,188486,186789,183229,177062,170613,161442];
+			northArr = ["219,511", "219,511", "219,511", "219,511", "223,084", "223,084", "225,371", "225,371", "229,495", "229,495", "233,621", "233,621", "245,345", "245,345", "240,414", "240,414", "246,870", "246,870", "250,131", "250,131", "193,333", "248,734", "256,176", "75,088", "74,631", "74,106", "73,322", "71,102", "68,832", "65,848"];
+			northNArr = [219511,219511,219511,219511,223084,223084,225371,225371,229495,229495,233621,233621,245345,245345,240414,240414,246870,246870,250131,250131,193333,248734,256176,75088,74631,74106,73322,71102,68832,65848];
+			jazanArr = ["948,876", "948,876", "948,876", "948,876", "961,373", "961,373", "970,017", "970,017", "992,627", "992,627", "1,006,111", "1,006,111", "1,011,842", "1,011,842", "1,034,247", "1,034,247", "1,057,364", "1,057,364", "1,085,207", "1,085,207", "802,309", "1,089,993", "1,122,171", "194,764", "194,886", "194,372", "194,699", "194,215", "192,924", "189,766"];
+			jazanNArr = [948876,948876,948876,948876,961373,961373,970017,970017,992627,992627,1006111,1006111,1011842,1011842,1034247,1034247,1057364,1057364,1085207,1085207,802309,1089993,1122171,194764,194886,194372,194699,194215,192924,189766];
+			najranArr = ["345,727", "345,727", "345,727", "345,727", "350,877", "350,877", "354,219", "354,219", "360,659", "360,659", "366,725", "366,725", "392,638", "392,638", "375,063", "375,063", "384,184", "384,184", "388,408", "388,408", "329,388", "389,857", "407,028", "191,279", "191,203", "191,628", "187,939", "183,081", "176,314", "166,705"];
+			najranNArr = [345727,345727,345727,345727,350877,350877,354219,354219,360659,360659,366725,366725,392638,392638,375063,375063,384184,384184,388408,388408,329388,389857,407028,191279,191203,191628,187939,183081,176314,166705];
+			bahaArr = ["300,092", "300,092", "300,092", "300,092", "304,344", "304,344", "306,685", "306,685", "312,591", "312,591", "317,914", "317,914", "332,563", "332,563", "327,391", "327,391", "334,096", "334,096", "346,874", "346,874", "262,660", "349,672", "352,801", "85,508", "84,484", "83,313", "81,792", "80,272", "77,891", "75,038"];
+			bahaNArr = [300092,300092,300092,300092,304344,304344,306685,306685,312591,312591,317914,317914,332563,332563,327391,327391,334096,334096,346874,346874,262660,349672,352801,85508,84484,83313,81792,80272,77891,75038];
+			joufArr = ["310,277", "310,277", "310,277", "310,277", "314,350", "314,350", "317,785", "317,785", "323,462", "323,462", "329,195", "329,195", "342,395", "342,395", "337,362", "337,362", "346,913", "346,913", "335,042", "335,042", "266,954", "337,105", "350,679", "113,078", "112,226", "110,428", "109,000", "105,263", "101,155", "96,403"];
+			joufNArr = [310277,310277,310277,310277,314350,314350,317785,317785,323462,323462,329195,329195,342395,342395,337362,337362,346913,346913,335042,335042,266954,337105,350679,113078,112226,110428,109000,105263,101155,96403];
+			period = ["2011 Q1", "2011 Q2", "2011 Q3", "2011 Q4", "2012 Q1", "2012 Q2 ", "2012 Q3", "2012 Q4", "2013 Q1", "2013 Q2", "2013 Q3", "2013 Q4", "2014 Q1", "2014 Q2", "2014 Q3", "2014 Q4", "2015 Q1", "2015 Q2", "2015 Q3", "2015 Q4", "2016 Q1", "2016 Q2 ", "2016 Q3", "2016 Q4", "2017 Q1", "2017 Q2 ", "2017 Q3", "2017 Q4", "2018 Q1", "2018 Q2" ];
+			
+			function displayDate() {
+				for(var i=0; i<riyadhArr.length; i++){
+					
+					(function (i) {
+			            setTimeout(function () {
+						// -- Set values in ripple
+			            var ry = document.getElementById("riyadhText"); ry['innerText' in ry ? "innerText" : "textContent"] = riyadhArr[i];
+						var mk = document.getElementById("makkahText"); mk['innerText' in mk ? "innerText" : "textContent"] = makkahArr[i];
+		            	var md = document.getElementById("madinahText"); md['innerText' in md ? "innerText" : "textContent"] = madinahArr[i];				
+		            	var qm = document.getElementById("qassimText"); qm['innerText' in qm ? "innerText" : "textContent"] = qassimArr[i];
+		            	var et = document.getElementById("eastText"); et['innerText' in et ? "innerText" : "textContent"] = eastArr[i];
+		            	var ar = document.getElementById("asirText"); ar['innerText' in ar ? "innerText" : "textContent"] = asirArr[i];
+		            	var tk = document.getElementById("tabukText"); tk['innerText' in tk ? "innerText" : "textContent"] = tabukArr[i];
+		            	var hl = document.getElementById("hailText"); hl['innerText' in hl ? "innerText" : "textContent"] = hailArr[i];
+		            	var nt = document.getElementById("northText"); nt['innerText' in nt ? "innerText" : "textContent"] = northArr[i];
+		            	var jz = document.getElementById("jazanText"); jz['innerText' in jz ? "innerText" : "textContent"] = jazanArr[i];
+		            	var nj = document.getElementById("najranText"); nj['innerText' in nj ? "innerText" : "textContent"] = najranArr[i];
+		            	var bh = document.getElementById("bahaText"); bh['innerText' in bh ? "innerText" : "textContent"] = bahaArr[i];
+		            	var jf = document.getElementById("joufText"); jf['innerText' in jf ? "innerText" : "textContent"] = joufArr[i];
+		            	
+		            	// -- Set table values
+		            	var prd = document.getElementById('p1');
+		            	prd.innerHTML = 
+		            		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+ 					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+ 					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+ 					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + period[i];
+ 					
+ 					// -- set circle radius
+ 					if(i > 0 ){ 						
+ 					var c1 = document.getElementById("c1"); var r1 = c1.getAttribute("r");c1.setAttribute("r",r1*(riyadhNArr[i]/riyadhNArr[i-1]));
+ 					var c2 = document.getElementById("c2"); var r2 = c2.getAttribute("r");c2.setAttribute("r",r2*(makkahNArr[i]/makkahNArr[i-1])  );		 
+ 					var c3 = document.getElementById("c3"); var r3 = c3.getAttribute("r");c3.setAttribute("r",r3*(madinahNArr[i]/madinahNArr[i-1])  );	
+ 					var c4 = document.getElementById("c4"); var r4 = c4.getAttribute("r");c4.setAttribute("r",r4*(qassimNArr[i]/qassimNArr[i-1])  );		 
+ 					var c5 = document.getElementById("c5"); var r5 = c5.getAttribute("r");c5.setAttribute("r",r5*(eastNArr[i]/eastNArr[i-1])  );
+ 					var c6 = document.getElementById("c6"); var r6 = c6.getAttribute("r");c6.setAttribute("r",r6*(asirNArr[i]/asirNArr[i-1])  );
+ 					var c7 = document.getElementById("c7"); var r7 = c7.getAttribute("r");c7.setAttribute("r",r7*(tabukNArr[i]/tabukNArr[i-1])  );
+ 					var c8 = document.getElementById("c8"); var r8 = c8.getAttribute("r");c8.setAttribute("r",r8*(hailNArr[i]/hailNArr[i-1])  );
+ 					var c9 = document.getElementById("c9"); var r9 = c9.getAttribute("r");c9.setAttribute("r",r9*(northNArr[i]/northNArr[i-1])  );
+ 					var c10 = document.getElementById("c10"); var r10 = c10.getAttribute("r");c10.setAttribute("r",r10*(jazanNArr[i]/jazanNArr[i-1])  );
+ 					var c11 = document.getElementById("c11"); var r11 = c11.getAttribute("r");c11.setAttribute("r",r11*(najranNArr[i]/najranNArr[i-1])  );
+ 					var c12 = document.getElementById("c12"); var r12 = c12.getAttribute("r");c12.setAttribute("r",r12*(bahaNArr[i]/bahaNArr[i-1])  );
+ 					var c13 = document.getElementById("c13"); var r13 = c13.getAttribute("r");c13.setAttribute("r",r13*(joufNArr[i]/joufNArr[i-1])  );
+ 					} 
+		            	 //$('p').text() = period[i];
+			            }, 1000 * i);
+			        })(i); //function(i)
+					
+				}//for				
+					
+				}//displayDate
+				
+				//var x = document.getElementById("riyadhText");
+			    //x['innerText' in x ? "innerText" : "textContent"] = Date();
+			
+		</script>
+	
+    </head>
+    
+    
+    <body>
+    	
+    	 <!-- <input type="button" value="PLAY" onclick="displayDate()" /> -->
+    	   
+   		<object data="SaudiMap.svg" type="image/svg+xml"
+         id="map" width="900" height="750"></object>       
+      
+        
+        
+		<!--Riyadh  -->
+		<svg id = "riyadhC" class="riyadh" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id="c1" cx="25" cy="25" r="88" fill="red" fill-opacity="0.4"  />
+		</svg>
+		<svg id= "riyadhT" class="riyadhT" height="30" width="200">
+		  <text id ="riyadhText" x="25" y="25" fill="black">5,053,574</text>  
+		</svg>
+		 
+			<div class="markRiyadh"></div>
+		 
+		
+		<!--Makkah  -->
+		<svg id = "makkahC" class="makkah" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id="c2" cx="25" cy="25" r="90" fill="green" fill-opacity="0.4"  />
+		</svg>
+		<svg id= "makkahT" class="makkahT" height="30" width="200">
+		  <text id ="makkahText" x="25" y="25" fill="black">5,117,422</text>  
+		</svg> 
+		 
+			<div class="markMakkah"></div>
+		 
+			
+ 		<!--Madinah  -->
+		<svg id = "madinahC" class="madinah" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c3" cx="25" cy="25" r="22" fill="blue" fill-opacity="0.4"  />
+		</svg>
+		<svg id= "madinahT" class="madinahT" height="30" width="200">
+		  <text id ="madinahText" x="25" y="25" fill="black">1,243,626</text>  
+		</svg>
+ 		 
+			<div class="markMadinah"></div>
+		 
+ 		
+ 		<!--Qassim  -->
+		<svg id = "qassimC" class="qassim" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c4" cx="25" cy="25" r="16" fill="black" fill-opacity="0.4"  />
+		</svg>
+		<svg id= "qassimT" class="qassimT" height="30" width="200">
+		  <text id ="qassimText" x="25" y="25" fill="black">888,998</text>  
+		</svg>
+ 		 
+			<div class="markQassim"></div>
+		 
+		
+		<!--Eastern Area  -->
+		<svg id = "eastC" class="east" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c5" cx="25" cy="25" r="54" fill="#e22406" fill-opacity="0.7"  />
+		</svg>
+		<svg id= "eastT" class="eastT" height="30" width="200">
+		  <text id ="eastText" x="25" y="50" fill="black">3,079,312</text>  
+		</svg>
+ 		 
+			<div class="markEast"></div>
+		 
+		
+		<!--Asir  -->
+		<svg id = "asirC" class="asir" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c6" cx="25" cy="25" r="24" fill="#133ad6" fill-opacity="0.7"  />
+		</svg>
+		<svg id= "asirT" class="asirT" height="30" width="200">
+		  <text id ="asirText" x="25" y="50" fill="black">1,359,148</text>  
+		</svg>
+ 		 
+			<div class="markAsir"></div>
+		 
+		
+		<!--Tabuk  -->
+		<svg id = "tabukC" class="tabuk" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c7" cx="25" cy="25" r="9" fill="#d612cf" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "tabukT" class="tabukT" height="30" width="200">
+		  <text id ="tabukText" x="25" y="50" fill="black">527,440</text>  
+		</svg>
+ 		 
+			<div class="markTabuk"></div>
+		 
+ 		
+ 		<!--Hail  -->
+		<svg id = "hailC" class="hail" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c8" cx="25" cy="25" r="8" fill="#3dcced" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "hailT" class="hailT" height="30" width="200">
+		  <text id ="hailText" x="25" y="45" fill="black">438,249</text>  
+		</svg>
+ 		 
+			<div class="markHail"></div>
+		 
+		
+		<!--Northen Borders  -->
+		<svg id = "northC" class="north" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c9" cx="25" cy="25" r="4" fill="#c47f25" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "northT" class="northT" height="30" width="200">
+		  <text id ="northText" x="25" y="45" fill="black">219,511</text>  
+		</svg>
+ 		 
+			<div class="markNorth"></div>
+		 
+		
+		<!--Jazan  -->
+		<svg id = "jazanC" class="jazan" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c10" cx="25" cy="25" r="17" fill="#dd1898" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "jazanT" class="jazanT" height="30" width="200">
+		  <text id ="jazanText" x="25" y="45" fill="black">948,876</text>  
+		</svg>
+ 		 
+			<div class="markJazan"></div>
+		 
+		
+		<!--Najran  -->
+		<svg id = "najranC" class="najran" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c11" cx="25" cy="25" r="6" fill="#38d85b" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "najranT" class="najranT" height="30" width="200">
+		  <text id ="najranText" x="25" y="45" fill="black">345,727</text>  
+		</svg>
+ 		 
+			<div class="markNajran"></div>
+		 
+		
+		<!--Baha  -->
+		<svg id = "bahaC" class="baha" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c12" cx="25" cy="25" r="5" fill="#38d85b" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "bahaT" class="bahaT" height="30" width="200">
+		  <text id ="bahaText" x="25" y="45" fill="black">300,092</text>  
+		</svg>
+ 		 
+			<div class="markBaha"></div>
+		 
+		
+		<!--Jouf  -->
+		<svg id = "joufC" class="jouf" xmlns="http://www.w3.org/2000/svg" >
+		    <circle id= "c13" cx="25" cy="25" r="6" fill="#38d85b" fill-opacity="0.5"  />
+		</svg>
+		<svg id= "joufT" class="joufT" height="30" width="200">
+		  <text id ="joufText" x="25" y="45" fill="black">310,277</text>  
+		</svg>
+ 		 
+			<div class="markJouf"></div>
+		 
+ 		<!--   <button>Click </button>  -->
+ 		<!-- Define a Table -->
+ 		<div>
+ 		<p id="p1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2011 Q1</p>			
+		
+       <input type="button" value="PLAY" onclick="displayDate()" />
+       
+       </div>
+    </body>
+</html>

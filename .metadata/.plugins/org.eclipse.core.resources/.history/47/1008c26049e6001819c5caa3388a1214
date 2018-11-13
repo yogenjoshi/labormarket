@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var geoCoordMap = {
+		'Riyadh' : 	[[46.69, 24.84], [0]],
+		'Dhiba' : 	[[35.72, 27.34], [2450000]],
+		'Jazan' : 	[[42.57, 16.90], [2400000]],
+		'Yanbu' :	[[38.12, 24.11], [1500000]],
+		'Jubail' : [[49.55, 27.03], [1500000]],
+		'King Abdul Aziz Dammam' :[[50.19, 26.48], [1300000] ],
+		'King Fahd Ind. Port Yanbu' : 	[[38.21, 23.97], [1000000]],
+		'Jeddah Islamic Port' : 	[[39.15, 21.48], [900000]],
+		'King Fahd Ind. Port Jubail' : [[49.69, 27.09], [850000] ],
+		
+		'D1' : [[37.463, 20.634], [0] ],
+		'D2' : [[37.880, 20.770], [0] ],
+		'D3' : [[38.542, 21.438], [0] ],		
+			'D12' : [[44.092, 11.983], [0] ],
+			'D22' : [[43.857, 12.082], [0] ],
+			'D32' : [[44.001, 11.881], [0] ],		
+		'D13' : [[54.883, 13.151], [0] ],
+		'D23' : [[54.996, 13.379], [0] ],
+		'D33' : [[54.790, 13.166], [0] ],		
+			'D14' : [[77.112, 3.770], [0] ],
+			'D24' : [[76.822, 3.516], [0] ],
+			'D34' : [[76.568, 3.116], [0] ],		
+		'D15' : [[96.035, 8.763], [0] ],
+		'D25' : [[95.731, 8.515], [0] ],
+		'D35' : [[95.261, 8.164], [0] ],		
+			'D16' : [[101.098, 2.952], [0] ],
+			'D26' : [[100.964, 2.855], [0] ],
+			'D36' : [[100.730, 2.694], [0] ],
+			
+		'Da1' : [[33.912, 27.718], [0] ],
+		'Db1' : [[33.849, 27.693], [0] ],
+		'Dc1' : [[33.826, 27.672], [0] ],	
+			'Da2' : [[32.653, 29.536], [0] ],
+			'Db2' : [[32.602, 29.530], [0] ],
+			'Dc2' : [[32.540, 29.527], [0] ]	
+		
+};
+
+var BJData = [
+    [{name:'D1'}, {name:'Dhiba',value: ['Containers : 128/day <br/> CO2 :  217 tons/day <br/> Fuel : 612 KL/day' ]}],
+    [{name:'D2'}, {name:'Dhiba',value:[ 'Containers : 128/day <br/> CO2 :  217 tons/day <br/> Fuel : 612 KL/day' ]}],
+    [{name:'D3'}, {name:'Dhiba',value:[ 'Containers : 128/day <br/> CO2 :  217 tons/day <br/> Fuel : 612 KL/day' ]}], 
+    
+    [{name:'D12'}, {name:'D1',value:0}],
+    [{name:'D22'}, {name:'D2',value:0}],
+    [{name:'D32'}, {name:'D3',value:0}],    
+	    [{name:'D13'}, {name:'D12',value:0}],
+	    [{name:'D23'}, {name:'D22',value:0}],
+	    [{name:'D33'}, {name:'D32',value:0}],    
+    [{name:'D14'}, {name:'D13',value:0}],
+    [{name:'D24'}, {name:'D23',value:0}],
+    [{name:'D34'}, {name:'D33',value:0}],    
+	    [{name:'D15'}, {name:'D14',value:0}],
+	    [{name:'D25'}, {name:'D24',value:0}],
+	    [{name:'D35'}, {name:'D34',value:0}],    
+    [{name:'D16'}, {name:'D15',value:0}],
+    [{name:'D26'}, {name:'D25',value:0}],
+    [{name:'D36'}, {name:'D35',value:0}],
+    
+    [{name:'Da1'}, {name:'Dhiba',value:0}],
+    [{name:'Db1'}, {name:'Dhiba',value:0}],
+    [{name:'Dc1'}, {name:'Dhiba',value:0}],
+	    [{name:'Da2'}, {name:'Da1',value:0}],
+	    [{name:'Db2'}, {name:'Db1',value:0}],
+	    [{name:'Dc2'}, {name:'Dc1',value:0}]
+    
+     
+   
+];
+
+var SHData = [
+    [{name:'Riyadh'},{name:'Dhiba',value:95}],
+    [{name:'Riyadh'},{name:'Jazan',value:90}],
+    [{name:'Riyadh'},{name:'Yanbu',value:80}],
+    [{name:'Riyadh'},{name:'Jubail',value:70}],
+    [{name:'Riyadh'},{name:'King Abdul Aziz Dammam',value:60}],
+    [{name:'Riyadh'},{name:'King Fahd Ind. Port Yanbu',value:50}],
+    [{name:'Riyadh'},{name:'Jeddah Islamic Port',value:40}],
+    [{name:'Riyadh'},{name:'King Fahd Ind. Port Jubail',value:30}],
+    [{name:'Riyadh'},{name:'D1',value:20}],
+    [{name:'Riyadh'},{name:'D2',value:10}],
+    [{name:'Riyadh'}, {name:'D3',value:9}]
+    
+];
+
+var GZData = [
+    [{name:'Syria'},{name:'Riyadh',value:95}],
+    [{name:'Syria'},{name:'India',value:90}],
+    [{name:'Syria'},{name:'Pakistan',value:80}],
+    [{name:'Syria'},{name:'Philippines',value:70}],
+    [{name:'Syria'},{name:'Bangladesh',value:60}],
+    [{name:'Syria'},{name:'Yemen',value:50}],
+    [{name:'Syria'},{name:'Egypt',value:40}],
+    [{name:'Syria'},{name:'Indonasia',value:30}],
+    [{name:'Syria'},{name:'Myanmar',value:20}],
+    [{name:'Syria'},{name:'SriLanka',value:10}]    
+];
+
+//var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
+//var planePath = 'path://M-244.396,44.399c0,0,0.47-2.931-2.427-6.512c2.819-8.221,3.21-15.709,3.21-15.709s5.795,1.383,5.795,7.325C-237.818,39.679-244.396,44.399-244.396,44.399z M-260.371,40.827c0,0-3.881-12.946-3.881-18.319c0-2.416,0.262-4.566,0.669-6.517h17.684c0.411,1.952,0.675,4.104,0.675,6.519c0,5.291-3.87,18.317-3.87,18.317H-260.371z M-254.745,18.951c-1.99,0-3.603,1.676-3.603,3.744c0,2.068,1.612,3.744,3.603,3.744c1.988,0,3.602-1.676,3.602-3.744S-252.757,18.951-254.745,18.951z M-255.521,2.228v-5.098h1.402v4.969c1.603,1.213,5.941,5.069,7.901,12.5h-17.05C-261.373,7.373-257.245,3.558-255.521,2.228zM-265.07,44.399c0,0-6.577-4.721-6.577-14.896c0-5.942,5.794-7.325,5.794-7.325s0.393,7.488,3.211,15.708C-265.539,41.469-265.07,44.399-265.07,44.399z M-252.36,45.15l-1.176-1.22L-254.789,48l-1.487-4.069l-1.019,2.116l-1.488-3.826h8.067L-252.36,45.15z';
+var planePath = 'path://M40.02-99c2.07,1.21,4.26,2.25,6.19,3.66c5.94,4.34,8.23,12.57,4.95,19.79 c-3.21,7.08-6.82,14.03-10.86,20.67c-2.17,3.56-1.25,5.38,1.99,6.36c2.94,0.89,6.36,1.91,9.15,1.21c5.51-1.4,8.33,1.23,10.66,5.29 c4.71,8.22,9.72,16.29,13.84,24.8C81.06-6.65,89,0.4,99.56,5.17C109.82,9.8,120,14.7,129.85,20.15c4.72,2.61,9.09,6.37,10.24,12.97 c-2.89-1.93-5.2-3.75-7.78-5.04c-0.99-0.5-2.6,0.22-4.83,0.5c-5.36-9.35-16.8-9.4-26.74-12.62C91.68,13.04,81.82,11.37,75.66,3 c-5.98-8.13-11.61-16.52-17.4-24.79c-0.46-0.66-0.98-1.27-1.66-2.16c-3.21,7.75-6.78,15-9.12,22.63c-1.15,3.76-0.64,8.37,0.26,12.33 c0.81,3.59,3.01,6.92,4.87,10.22c6.73,11.95,2.41,22.89-2.91,33.75c-0.35,0.72-0.86,1.43-1.46,1.97 c-7.11,6.38-14.48,12.5-21.24,19.22c-2.08,2.07-3.1,5.7-3.62,8.77c-1.92,11.44-3.81,22.92-4.93,34.46 c-0.5,5.16,1.06,10.49,1.28,15.75c0.23,5.7,0.39,11.47-0.15,17.13c-1.15,12.11-2.83,24.17-4.11,36.27c-0.18,1.72,0.8,3.53,1.13,5.33 c0.88,4.76-0.22,6.23-4.71,5.17c-4.53-1.06-8.86-2.94-14.27-4.8c1.98-1.62,2.84-2.83,3.94-3.12c5.42-1.44,7-5.2,6.39-10.23 c-1.39-11.39-3.15-22.73-4.24-34.14c-0.53-5.56,0.16-11.23,0.24-16.85c0.06-4.49,0.01-8.97,0.01-14.72 c-2.79,1.53-5.2,2.27-6.79,3.83c-4.26,4.19-8.39,8.56-12.11,13.22c-1.55,1.95-2.19,4.76-2.79,7.29c-0.47,1.99,0.6,5.02-0.48,6.05 c-2.17,2.08-5.2,3.79-8.13,4.38c-3.61,0.73-7.49,0.18-12.26,0.18c6.34-8.69,11.91-16.11,17.22-23.71c3.29-4.71,6.23-9.67,9.24-14.58 c2.15-3.5,3.76-7.4,6.3-10.57c5.38-6.73,6.74-14.28,6.72-22.64C0.88,68.3,1.36,57.91,2.26,47.58c0.69-7.85,2.15-15.67,3.7-23.41 c0.77-3.83,2.89-7.39,3.72-11.22c1.83-8.4-1.9-16-4.38-23.95C2.96-5.34-0.31,0.12-1.5,6c-1.96,9.72-7.34,17.44-12.26,25.57 c-4.39,7.25-8.79,14.52-12.75,22.01c-2.64,5-4.5,10.41-6.83,15.92c-4.82-5.28-4.65-10.59-0.94-16.97 C-21.4,30.4-12.08,6.78-6.17-18.12c1.4-5.88,1.24-12.11,2.23-18.12c1.2-7.27,4.15-9.56,11.39-9.69c8.65-0.14,13.86-4.77,14.48-13.51 c0.35-5.01,0.16-10.11-0.28-15.12c-0.82-9.3,2.49-16.57,10.17-21.69c2.08-1.39,4.78-1.87,7.2-2.76C39.35-99,39.69-99,40.02-99z';
+var convertData = function (data) {		
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i];        
+        var toCoord = geoCoordMap[dataItem[0].name][0];
+        var fromCoord = geoCoordMap[dataItem[1].name][0];
+        
+        if (fromCoord && toCoord) {
+            res.push({
+                fromName: dataItem[0].name,
+                toName: dataItem[1].name,
+                coords: [fromCoord, toCoord]
+            });
+        }
+    }
+    return res;
+};
+
+var color = ['#a6c84c', '#ffa022', '#46bee9'];
+var series = [];
+[['Riyadh', BJData]].forEach(function (item, i) {
+    series.push({
+        //name: item[0] + ' Top10',
+        name: '',
+        type: 'lines',
+        zlevel: 1,
+        effect: {
+            show: true,
+            period: 16,
+            trailLength: 0.7,
+            color: '#fff',
+            symbolSize: 6
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 0,
+                curveness: -0.02
+            }
+        },        
+        data: convertData(item[1]) // ['Riyadh', 'India', [[116.4551,40.2539], [121.4648,31.2891]]]
+    },
+    {
+        //name: item[0] + ' Top10',
+        name: '',
+        type: 'lines',
+        zlevel: 2,
+        symbol: ['none', 'none'],// was none, arrow
+        symbolSize: 10,
+        effect: {
+            show: true,
+            period: 16,
+            trailLength: 0,
+            symbol: planePath,
+            symbolSize: 15
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 0, // was 1
+                opacity: 0.6,
+                curveness: -0.02
+            }
+        },
+        data: convertData(item[1])
+    },
+    {
+        //name: item[0] + ' Top10',
+        name: '',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            normal: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: function (val) {
+            return val[2] / 8;
+        },
+        itemStyle: {
+            normal: {
+                color: color[i]
+            }
+        },
+        data: item[1].map(function (dataItem) {
+            return {
+                name: dataItem[1].name,
+                value: geoCoordMap[dataItem[1].name][0].concat([dataItem[1].value])
+            };
+        })						 
+    });
+});
+
+option = {
+    backgroundColor: '#404a59',
+    title : {
+    	text: 'Saudi Arabia Shipping Container',
+        subtext: 'Major ports only',
+        left: 'center',
+        textStyle : {
+            color: '#fff'
+        }
+    },
+    tooltip : {
+        trigger: 'item',
+    	formatter : function (params) {
+            //var value = (params.value + '').split('.');
+            //value = value[1].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
+              //      + '.' + value[1];
+            //return params.seriesName + '<br/>' + params.name + ' : ' + params.value[2] +'0000';
+    		return  params.name +' : ' + '<br/>'+ params.value[2];
+        }
+        
+       
+    },
+    legend: {
+        orient: 'vertical',
+        top: 'bottom',
+        left: 'right',
+        data:['Riyadh Top10', 'India Top10', 'Syria Top10'],
+        textStyle: {
+            color: '#fff'
+        },
+        selectedMode: 'single'
+    },
+    geo: {
+        map: 'world',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#323c48',
+                borderColor: '#404a59'
+            },
+            emphasis: {
+                areaColor: '#2a333d'
+            }
+        }
+    },
+    series: series
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

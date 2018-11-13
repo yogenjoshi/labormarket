@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="echarts.js"></script>
+</head>
+<body>
+	 <div id="main" style="width: 600px;height:400px;"></div>
+	 <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+
+        myChart.setOption({
+            series : [
+                {
+                    name: 'Reference Page',
+                    type: 'pie',
+                    radius: '55%',
+                    data:[
+                        {value:400, name:'Searching Engine'},
+                        {value:335, name:'Direct'},
+                        {value:310, name:'Email'},
+                        {value:274, name:'Alliance Advertisement'},
+                        {value:235, name:'Video Advertisement'}
+                    ]
+                }
+            ]
+        })
+    </script>
+</body>
+</html>
